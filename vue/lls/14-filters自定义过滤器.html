@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			{{'hello'| uppercase}} <br />
+			{{'HELLO'| lowercase | capitalize}} <br />
+			{{ msg | capitalize }}
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el: "#box",
+				data: {
+					msg: "world"
+				},
+				filters: {  //自定义过滤器
+	    			capitalize: function (value) {
+	      				if (!value) return ''
+	      					value = value.toString()
+	      				return value.charAt(0).toUpperCase() + value.slice(1)
+	    			},
+	    			lowercase: function(val){
+	    				return val.toLowerCase();
+	    			},
+	    			uppercase: function(val){
+	    				return val.toUpperCase();
+	    			}
+  				}
+			})
+		</script>
+		<div id="main">
+			<input type="text" @keydown="show" /> <br />
+			<input type="text" @keydown="show($event)" />
+		</div>
+		<script>
+			new Vue({
+				el: "#main",
+				methods: {
+					show: function(ev){
+						console.log(ev.keyCode);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

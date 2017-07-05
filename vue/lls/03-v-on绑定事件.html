@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el: "#btn",
+					data:{
+						
+					},
+					methods:{
+						show: function(){
+							console.log(Math.random());
+						}
+					}
+				});
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn" v-on:click="show"/>
+	</body>
+</html>

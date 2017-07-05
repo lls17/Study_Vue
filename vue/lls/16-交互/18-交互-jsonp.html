@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="vue-resource.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--
+			若想要用Vue做交互，要引入 vue-resource.js
+		-->
+		<div id="box">
+			{{show()}}			
+		</div>
+		
+		<!--例子：读取文件-->
+		
+		<script type="text/javascript">
+			new Vue({
+				el: "#box",
+				methods: {
+					show: function(){
+//https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=a&cb=jQuery110205896552044682406_1499256808166&_=1499256808169
+						this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su", {
+							wd: 'a'
+						},{
+						    jsonp:'cb'	//callback名字，默认名字就是"callback"
+						}).then(function(res){
+							console.log(res.data.s);
+						}, function(res){
+							console.log(res.statusText);
+						});
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

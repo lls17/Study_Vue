@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	
+	<body>
+		<div id="box">
+			<input type="text" @keydown="down($event)"/>
+			<hr />
+			<input type="text" @keyup="up($event)" value="@keyup($event)"/> <br />
+			<input type="text" @keyup.13="upEnter()" value="回车触发：@keyup.13"/><br />
+			<input type="text" @keyup.enter="upEnter()" value="回车触发：@keyup.enter"/>
+		</div>
+		<hr />
+		<script type="text/javascript">
+			new Vue({
+				el: "#box",
+				methods: {
+					down: function(ev){
+						alert(ev.keyCode);
+					},
+					up: function(ev){
+						alert(ev.keyCode);
+					},
+					upEnter: function(){
+						alert("回车触发");
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

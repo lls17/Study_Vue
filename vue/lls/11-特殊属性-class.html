@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				height: 200px;
+				width: 200px;
+				background: lightblue;
+				border: 1px solid black;
+			}
+			.red{
+				color: red;
+				text-align: center;
+				line-height: 200px;
+			}
+		</style>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			:class = {类名：true/false}  —— true/false放在data里控制<br />
+			<div :class="{box:isActive, red:hasError}">今天天气不错~~~</div>
+			<hr />
+			:class = [类名，类名] —— 类名放在data里控制<br />
+			<div :class="[dataBox, dataRed]">今天天气不错~~~</div>
+			<hr />
+			:class = {json} <br />
+			<pre>data:{
+					json:{red:a, blue:false}
+				}</pre>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el: "#box",
+				data: {
+					dataBox: "box",
+					dataRed: "red",
+					isActive: true,
+  					hasError: false
+				}
+			});
+		</script>
+	</body>
+</html>

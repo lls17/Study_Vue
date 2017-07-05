@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				height: 100px;
+				width: 100px;
+				line-height: 100px;
+				text-align: center;
+				font-size: 30px;
+				background: orange;
+				border: 1px solid black;
+			}
+		</style>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="main">
+			<div id="box1" class="box" @contextmenu.prevent="show1()">1</div>
+			<div id="box2" class="box" @contextmenu="show2($event)">2</div>
+		</div>
+		<!--
+			阻止浏览器默认行为：
+				
+				① ev.prevetDefault();
+				② @menucontext.prevet  绑定事件
+			
+		-->
+		<script type="text/javascript">
+			new Vue({
+				el: "#main",
+				methods: {
+					show1: function(){
+						console.log("1");
+					},
+					show2: function(ev){
+						console.log("2");
+						ev.preventDefault();
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el: ".box",
+					data:{
+						flag:true
+					},
+					methods:{
+						show: function(){
+							this.flag = !this.flag;
+						}
+					}
+				});
+			};
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<input id="btn" type="button" value="显示/隐藏" v-on:click="show" />
+			<div style="height: 100px;width: 100px; background: orange;" v-show="flag"></div>
+		</div>
+	</body>
+</html>

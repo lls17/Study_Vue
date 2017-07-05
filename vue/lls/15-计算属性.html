@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<p>使用的是计算属性</p>
+			{{c_index}} <br />
+			{{c_index}} <br />
+			{{c_index}} <br />
+			<hr />
+			<p>使用的是Methods</p>
+			{{m_index()}} <br />
+			{{m_index()}} <br />
+			{{m_index()}} <br />
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el: "#box",
+				data: {
+					index : 2
+				},
+				computed: {
+					c_index : function(){
+						console.log("我是计算属性"); //打印了1次
+						return this.index+1;
+					}
+				},
+				methods: {
+					m_index: function(){
+						console.log("method中的方法"); //打印了3次
+						return this.index+1;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

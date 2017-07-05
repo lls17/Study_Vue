@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<button id="box" @click="show">CLICK</button>
+		<button id="box" @click="show($event)">CLICK</button>
+		<script>
+			new Vue({
+				el: "#box",
+				data: {
+					
+				},
+				methods: {
+					show: function(ev){
+						alert("x: " + ev.clientX + " , y: " + ev.clientY);
+					}
+				}
+			});
+		</script>
+		
+	</body>
+</html>

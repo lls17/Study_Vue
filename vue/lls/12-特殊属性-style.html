@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="box">
+			:style=[c]   c是json格式在data中控制
+			<p :style="c">今天是个好日子</p>
+		</div>
+		
+		<script type="text/javascript">
+			new Vue({
+				el: ".box",
+				data: {
+					c: {'color':'red'}
+				}
+			});
+		</script>
+	</body>
+</html>

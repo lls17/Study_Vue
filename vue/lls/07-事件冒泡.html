@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box" @click="show('盒子');" style="background: pink">
+			<input type="button" value="按 钮 1" @click.stop="show('按钮1');"/>
+			<input type="button" value="按 钮 2" @click="show2('按钮2', $event);"/>
+		</div>
+		
+		<!--
+			阻止冒泡:  
+				a)  ev.cancelBubble = true;
+				b)  @click.stop	 
+		-->
+		<script type="text/javascript">
+			new Vue({
+				el: "#box",
+				data: {
+					
+				},
+				methods: {
+					show: function(msg){
+						alert(msg);
+					},
+					show2: function(msg, ev){
+						alert(msg);
+						ev.cancelBubble = true;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

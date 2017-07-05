@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="vue-resource.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--
+			若想要用Vue做交互，要引入 vue-resource.js
+		-->
+		<div id="box">
+			{{show()}}			
+		</div>
+		
+		<!--例子：读取文件-->
+		
+		<script type="text/javascript">
+			new Vue({
+				el: "#box",
+				methods: {
+					show: function(){
+						//$http.post(url).then(resolve, reject)  Promise形式
+	
+						// $http.get 传递参数，给服务器发送数据
+						this.$http.post("./index.txt", {
+							a:1,
+							b:2
+						},{
+						    emulateJSON:true
+						}).then(function(res){
+							document.write(res.data);
+							console.log(res.status);
+						}, function(res){
+							console.log(res.statusText);
+						});
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var vm = new Vue({  //new个Vue实例，参数是一个json对象
+					el:"#box",
+					data:{
+						msg: "abc",
+						msg1: 12,
+						msg2: true,
+						msg3: ['aa', 'bb', 'cc'],
+						msg4: {
+							'a': 'apple',
+							'b': 'banana',
+							'c': 'pear'
+						}
+					}
+				});
+			};
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<input type="text" v-model="msg"/> <input type="text" v-model="msg"/>
+			<p> 字符串： </p>
+			{{msg}}
+			<hr />
+			
+			<p> 数字：</p>
+			{{msg1}} 
+			<hr />
+			
+			<p> boolean：</p>
+			{{msg2}} 
+			<hr />
+			
+			<p> 数组： </p>
+			{{msg3}}
+			<hr />
+			
+			<p> json：</p>
+			{{msg4}} 
+			<hr />
+		</div>
+	</body>
+</html>

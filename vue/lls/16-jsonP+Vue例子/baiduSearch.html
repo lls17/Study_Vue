@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.bg{
+				background: #CCC;
+			}
+		</style>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/vue-resource.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<input type="text" class="btn" v-model="txt" @keyup="preSearch" 
+				@keydown.down="preDown" @keydown.up.prevent="preUp" 
+				@keydown.enter="sureSearch"/>
+			<hr />
+			<ul>
+				<li v-for="(item, index) in reArr" :class="{bg: nowIndex==index}">{{item}}</li>
+			</ul>
+			<p v-show="reArr.length==0">--没有关联结果--</p>
+		</div>
+		
+		<script type="text/javascript">
+			new Vue({
+				el: "#box",
+				data: {
+					reArr: [],
+					txt: '',
+					nowIndex: -1
+				},
+				methods: {
+//https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=a&cb=jQuery110205896552044682406_1499256808166&_=1499256808169
+					preSearch: function(ev){
+						if(ev.keyCode==38 || ev.keyCode==40){
+							return;
+						}
+						this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su', {
+							wd: this.txt
+						},{
+							jsonp: 'cb'
+						}).then(function(res){
+							this.reArr = res.data.s;
+						})
+					},
+					preDown: function(){
+						this.nowIndex++;
+						if(this.nowIndex > this.reArr.length-1){
+							this.nowIndex = 0;
+						}
+						this.txt = this.reArr[this.nowIndex];
+					},
+					preUp: function(){
+						this.nowIndex--;
+						if(this.nowIndex == -1){
+							this.nowIndex = this.reArr.length-1;
+						}
+						this.txt = this.reArr[this.nowIndex];
+					},
+					sureSearch: function(){
+						window.open('https://www.baidu.com/s?wd='+this.txt);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<input type="text" value="" v-model="msg"/>
+			<hr />
+			双向绑定（模板-数据）： <span style="color: red;">{{msg}} </span>
+			<hr />
+			<!--只绑定一次数据：{{*msg}}-->
+			<hr />
+			html代码：<span v-html="msg" style="color: red;"></span>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el: "#box",
+				data: {
+					msg: ""
+				}
+			});
+		</script>
+	</body>
+</html>
